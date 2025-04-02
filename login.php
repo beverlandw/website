@@ -2,6 +2,12 @@
 session_start();
 include 'mysqlconnect.php';
 
+if (isset($_SESSION['username'])) {
+    echo "Logged in as: " . $_SESSION['username'] . " | <a href='logout.php'>Logout</a><br><br>";
+} else {
+    echo "You are not logged in. <a href='login_register.html'>Login</a><br><br>";
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['login_username'];
     $password = $_POST['login_password'];
@@ -30,7 +36,7 @@ function logout() {
     session_unset();
     session_destroy();
     // Redirect to login page
-    header("Location: login.php");
+    header("Location: login_register.html");
     exit();
 }
 

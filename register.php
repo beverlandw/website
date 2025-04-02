@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'mysqlconnect.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
